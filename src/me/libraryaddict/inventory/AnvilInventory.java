@@ -3,13 +3,13 @@ package me.libraryaddict.inventory;
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 
+import com.google.common.base.Objects;
 import me.libraryaddict.inventory.events.AnvilClickEvent;
 import me.libraryaddict.inventory.events.AnvilTypeEvent;
 import net.minecraft.server.v1_8_R3.BlockPosition;
 import net.minecraft.server.v1_8_R3.ContainerAnvil;
 import net.minecraft.server.v1_8_R3.EntityHuman;
 import net.minecraft.server.v1_8_R3.EntityPlayer;
-import net.minecraft.util.com.google.common.base.Objects;
 
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.Bukkit;
