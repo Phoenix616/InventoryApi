@@ -2,3 +2,4 @@ name: InventoryApi
 main: me.libraryaddict.inventory.InventoryApi
 author: libraryaddict
 version: '${minecraft.plugin.version}'
+depend: [ProtocolLib]
