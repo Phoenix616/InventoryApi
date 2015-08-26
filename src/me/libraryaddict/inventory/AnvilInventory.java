@@ -5,15 +5,16 @@ import java.util.HashMap;
 
 import me.libraryaddict.inventory.events.AnvilClickEvent;
 import me.libraryaddict.inventory.events.AnvilTypeEvent;
-import net.minecraft.server.v1_7_R4.ContainerAnvil;
-import net.minecraft.server.v1_7_R4.EntityHuman;
-import net.minecraft.server.v1_7_R4.EntityPlayer;
+import net.minecraft.server.v1_8_R3.BlockPosition;
+import net.minecraft.server.v1_8_R3.ContainerAnvil;
+import net.minecraft.server.v1_8_R3.EntityHuman;
+import net.minecraft.server.v1_8_R3.EntityPlayer;
 import net.minecraft.util.com.google.common.base.Objects;
 
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.craftbukkit.v1_7_R4.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
@@ -28,7 +29,7 @@ public class AnvilInventory extends ClickInventory {
         private String n;
 
         public AnvilContainer(EntityHuman entity) {
-            super(entity.inventory, entity.world, 0, 0, 0, entity);
+            super(entity.inventory, entity.world, new BlockPosition(0, 0, 0), entity);
         }
 
         @Override
@@ -46,10 +47,10 @@ public class AnvilInventory extends ClickInventory {
                 itemName = origString;
                 setItemName(newString);
                 if (getSlot(2).hasItem()) {
-                    net.minecraft.server.v1_7_R4.ItemStack itemstack = getSlot(2).getItem();
+                    net.minecraft.server.v1_8_R3.ItemStack itemstack = getSlot(2).getItem();
 
                     if (StringUtils.isBlank(newString))
-                        itemstack.t();
+                        itemstack.r();
                     else {
                         itemstack.c(this.n);
                     }
