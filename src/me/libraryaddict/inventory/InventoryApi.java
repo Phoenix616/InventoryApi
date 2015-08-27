@@ -36,7 +36,7 @@ public class InventoryApi extends JavaPlugin implements Listener {
     public static String getHiddenString(ItemStack item) {
         // Only the color chars at the end of the string is it
         StringBuilder builder = new StringBuilder();
-        if (!item.getItemMeta().hasDisplayName())
+        if (!item.hasItemMeta() || !item.getItemMeta().hasDisplayName())
             return null;
         char[] chars = item.getItemMeta().getDisplayName().toCharArray();
         for (int i = 0; i < chars.length; i++) {
