@@ -7,6 +7,7 @@ import com.google.common.base.Objects;
 import me.libraryaddict.inventory.events.AnvilClickEvent;
 import me.libraryaddict.inventory.events.AnvilTypeEvent;
 import net.minecraft.server.v1_8_R3.BlockPosition;
+import net.minecraft.server.v1_8_R3.ChatComponentText;
 import net.minecraft.server.v1_8_R3.ContainerAnvil;
 import net.minecraft.server.v1_8_R3.EntityHuman;
 import net.minecraft.server.v1_8_R3.EntityPlayer;
@@ -17,6 +18,7 @@ import org.bukkit.Material;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.ItemStack;
 
 import com.comphenix.protocol.PacketType;
@@ -25,6 +27,7 @@ import com.comphenix.protocol.events.PacketContainer;
 import com.comphenix.protocol.reflect.StructureModifier;
 
 public class AnvilInventory extends ClickInventory {
+
     private class AnvilContainer extends ContainerAnvil {
         private String n;
 
@@ -149,10 +152,9 @@ public class AnvilInventory extends ClickInventory {
         PacketContainer packet = new PacketContainer(PacketType.Play.Server.OPEN_WINDOW);
         StructureModifier<Object> mods = packet.getModifier();
         mods.write(0, c);
-        mods.write(1, 8);
-        mods.write(2, "Repairing");
-        mods.write(3, 9);
-        mods.write(4, true);
+        mods.write(1, "minecraft:anvil");
+        mods.write(2, new ChatComponentText("Repairing"));
+        mods.write(3, 0);
         try {
             ProtocolLibrary.getProtocolManager().sendServerPacket(getPlayer(), packet);
         } catch (InvocationTargetException e) {
